@@ -1,0 +1,105 @@
+/* Fondo de la página */
+body {
+    font-family: 'Verdana', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #FFB6C1, #FFDEB4, #B3E5FC, #FFEBCD);
+    position: relative;
+}
+
+/* Contenedor de globos */
+.balloons-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* Mantén los globos detrás */
+}
+
+/* Diseño del globo con degradado para simular brillo */
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 70px;
+    height: 90px;
+    border-radius: 50%;
+    animation: float 7s linear infinite;
+    box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.3) inset;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.5), rgba(255, 0, 0, 0.8));
+}
+
+/* Cuerda del globo */
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -70px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 90px;
+    background-color: #ffffff;
+    animation: sway 1.5s ease-in-out infinite;
+}
+
+/* Animación para que los globos floten */
+@keyframes float {
+    to {
+        transform: translateY(-100vh);
+    }
+}
+
+/* Animación de balanceo de la cuerda */
+@keyframes sway {
+    0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+    50% { transform: translateX(-50%) rotate(5deg); }
+}
+
+/* Estilos de texto */
+h1 {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    font-size: 3em;
+    margin: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    z-index: 10; /* Asegura que esté al frente */
+    position: relative;
+}
+
+#piropo-container {
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.01);
+    border-radius: 15px;
+    max-width: 80%;
+    z-index: 10; /* Asegura que esté al frente */
+    position: relative;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Tamaño de fuente más pequeño */
+    }
+
+    #piropo-container {
+        font-size: 1.5em; /* Tamaño de texto más pequeño */
+        padding: 10px; /* Menos padding */
+    }
+
+    .balloon {
+        width: 50px; /* Tamaño más pequeño de globos */
+        height: 65px; /* Altura más pequeña de globos */
+    }
+}
